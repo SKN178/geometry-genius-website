@@ -30,6 +30,12 @@ function calculateRectangleArea(){
     const length = parseFloat(lengthValueText);
     console.log(length);
 
+    // validate input 
+    if(isNaN(width) || isNaN(length)){
+        alert('please input valid number');
+        return;
+    }
+
     const area = width * length;
     console.log(area);
 
@@ -37,3 +43,37 @@ function calculateRectangleArea(){
     areaSpan.innerText = area;
 
 }
+
+// reuseable function---> reduce duplicate code
+
+function calculateParallelogramArea(){
+    const base = getInputValue('Parallelogram-base');
+    console.log(base); 
+    const height = getInputValue('Parallelogram-height');
+    console.log(height);
+
+    const area = base * height;
+    setElementInnerText('Parallelogram-area', area);
+}
+
+// reusable get input value field in number
+function getInputValue(fieldId){
+    const inputField = document.getElementById(fieldId);
+    const inputValueText = inputField.value;
+    const value = parseFloat(inputValueText);
+    return value;
+}
+
+// reusable set ,span, p, div etc text
+function setElementInnerText(elementId,area){
+const element = getElementById(elementId);
+element.innerText = area;
+}
+
+// data validation 
+/* 
+1.set the proper type of input field (number, date, .......)
+2.check typeOf
+3. isNaN
+4.
+*/
